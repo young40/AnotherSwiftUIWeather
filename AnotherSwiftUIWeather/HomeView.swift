@@ -13,9 +13,7 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                Text("Hello Weather")
-            }
+            addCityButton
             .navigationBarTitle("Weather")
             .navigationBarItems(trailing: addCityButton)
         }
@@ -29,8 +27,10 @@ struct HomeView: View {
         }) {
             Image(systemName: "plus.circle.fill")
         }
-        .sheet(isPresented: $isAddingCity) {
-            AddCityView()
+        .sheet(isPresented: $isAddingCity, onDismiss: {
+            self.isAddingCity = false
+        }) {
+            AddCityView(isPresented: self.$isAddingCity)
         }
     }
 }

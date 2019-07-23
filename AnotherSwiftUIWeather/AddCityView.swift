@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct AddCityView: View {
+    @Binding var isPresented: Bool
+    
     var body: some View {
         NavigationView {
             Text("Adding City")
@@ -17,16 +19,20 @@ struct AddCityView: View {
     }
     
     var cancleButtion: some View {
-        Button(action: {}) {
+        Button(action: {
+            withAnimation {
+                self.isPresented = false
+            }
+        }) {
             Text("Cancel")
         }
     }
 }
 
 #if DEBUG
-struct AddCityView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddCityView()
-    }
-}
+//struct AddCityView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddCityView()
+//    }
+//}
 #endif
