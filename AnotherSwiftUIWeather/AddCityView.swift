@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct AddCityView: View {
+//    @Binding var isPresented: Bool
+    
     var body: some View {
         NavigationView {
             Text("Adding City")
@@ -17,7 +19,11 @@ struct AddCityView: View {
     }
     
     var cancleButtion: some View {
-        Button(action: {}) {
+        Button(action: {
+            // May be a bug in SwiftUI
+            UIApplication.shared.windows[0].rootViewController?.dismiss(animated: true, completion: {})
+//            self.isPresented = false
+        }) {
             Text("Cancel")
         }
     }

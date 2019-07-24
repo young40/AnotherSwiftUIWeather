@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State var isAddingCity: Bool = false
+    @State var isPresented: Bool = false
     
     var body: some View {
         NavigationView {
@@ -24,13 +24,13 @@ struct HomeView: View {
     private var addCityButton: some View {
         Button(action: {
             withAnimation {
-                self.isAddingCity.toggle()
+                self.isPresented.toggle()
             }
         }) {
             Image(systemName: "plus.circle.fill")
         }
-        .sheet(isPresented: $isAddingCity) {
-            AddCityView()
+        .sheet(isPresented: $isPresented) {
+            AddCityView( )// isPresented: self.$isPresented)
         }
     }
 }
