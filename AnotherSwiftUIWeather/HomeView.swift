@@ -30,7 +30,7 @@ struct HomeView: View {
             Image(systemName: "plus.circle.fill")
         }
         .sheet(isPresented: $isPresented) {
-            AddCityView( )// isPresented: self.$isPresented)
+            AddCityView(isPresented: self.$isPresented)
         }
     }
 }

@@ -9,12 +9,27 @@
 import SwiftUI
 
 struct AddCityView: View {
-//    @Binding var isPresented: Bool
+    @Binding var isPresented: Bool
+    
+    @State var search: String = ""
     
     var body: some View {
         NavigationView {
-            Text("Adding City")
-                .navigationBarItems(leading: cancleButtion)
+            List {
+                Section {
+                    TextField("Search City", text: $search) {
+                        print("Input: \(self.$search.value)")
+                    }
+                }
+                
+                Section {
+                    Text("Test 1")
+                    Text("Test 2")
+                }
+            }
+            .navigationBarItems(leading: cancleButtion)
+            .navigationBarTitle("Add City")
+            .listStyle(.grouped)
         }
     }
     
@@ -32,7 +47,7 @@ struct AddCityView: View {
 #if DEBUG
 struct AddCityView_Previews: PreviewProvider {
     static var previews: some View {
-        AddCityView()
+        AddCityView(isPresented: .constant(true))
     }
 }
 #endif
